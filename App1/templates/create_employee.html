@@ -13,49 +13,68 @@
         {% block content %}
 
         {% if single_emp.id %}
-        <h3 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; background-color: antiquewhite;">View/Update Employee</h3>
+        <h4 class="alert" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; background-color: antiquewhite;">View/Update Employee</h4>
         {% else %}
-        <h3>Create Employee</h3>
+        <h4 class="alert" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; background-color: antiquewhite;">Create Employee</h4>
         {% endif %}
 
         <hr>
-        <form class="row g-4 " action="/create-employee/" method="POST">
-            {% csrf_token %}
-            {%if single_emp %}
-            <div class="col-md-3">
-                <label for="" class="form-lable" >ID</label>
-                <input type="text" class="form-control" name="id" value="{{single_emp.id}}" readonly>
+        <div class="container">
+            <div class="row">
+                <form class="" action="/create-employee/" method="POST">
+                    {% csrf_token %}
+                    {%if single_emp %}
+                    <div class="col-md-3">
+                        <label for="" class="form-lable" >ID</label>
+                        <input type="text" class="form-control" name="id" value="{{single_emp.id}}" readonly>
+                    </div>
+                    <br>
+                    {% endif %}
+                    <div class="col-md-3">
+                        <label for="" class="form-lable" >First Name</label>
+                        <input type="text" class="form-control" name="fname" value="{{single_emp.first_name}}" required>
+                    </div>
+                    <br>
+                    <div class="col-md-3">
+                        <label for="" class="form-lable" >Last Name</label>
+                        <input type="text" class="form-control" name="lname" value="{{single_emp.last_name}}" required>
+                    </div>
+                    <br>
+                    <div class="col-md-3">
+                        <label for="" class="form-lable" >Email</label>
+                        <input type="email" class="form-control" name="em" value="{{single_emp.email}}" required>
+                    </div>
+                    <br>
+                    <div class="col-md-3">
+                        <label for="" class="form-lable" >Mobile Number</label>
+                        <input type="number" class="form-control" name="mb" value="{{single_emp.mobile_num}}" required>
+                    </div>
+                    <br>
+                    <div class="col-md-3">
+                        <label for="" class="form-lable" >Designation</label>
+                        <input type="text" class="form-control" name="dsn" value="{{single_emp.designation}}" required>
+                    </div>
+                    <br>
+                    <div class="col-md-2">
+                        <!-- <label for="" class="form-lable" >Salary</label>
+                        <input type="range" class="form-range" min="2000" max="10000" step="1000" name="sal" value="{{single_emp.salary}}" required>
+                        <span>1000</span> -->
+                        <label class="form-lable">Salary</label>
+                        <input type="number" class="form-control" name="sal" value="{{single_emp.salary}}" required>
+                    </div>
+                    <br>
+                    <div >
+                        {% if single_emp %}
+                        <input class="btn btn-primary" type="submit" value="Update">
+                        {% else %}
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                        {% endif %}
+
+                    </div>
+                </form>
             </div>
-            {% endif %}
-            <div class="col-md-3">
-                <label for="" class="form-lable" >First Name</label>
-                <input type="text" class="form-control" name="fname" value="{{single_emp.first_name}}" required>
-            </div>
-            <div class="col-md-3">
-                <label for="" class="form-lable" >Last Name</label>
-                <input type="text" class="form-control" name="lname" value="{{single_emp.last_name}}" required>
-            </div>
-            <div class="col-md-3">
-                <label for="" class="form-lable" >Email</label>
-                <input type="email" class="form-control" name="em" value="{{single_emp.email}}" required>
-            </div>
-            <div class="col-md-3">
-                <label for="" class="form-lable" >Mobile Number</label>
-                <input type="number" class="form-control" name="mb" value="{{single_emp.mobile_num}}" required>
-            </div>
-            <div class="col-md-4">
-                <label for="" class="form-lable" >Designation</label>
-                <input type="text" class="form-control" name="dsn" value="{{single_emp.designation}}" required>
-            </div>
-            <div class="col-md-2">
-                <label for="" class="form-lable" >Salary</label>
-                <input type="range" class="form-range" min="2000" max="10000" step="1000" name="sal" value="{{single_emp.salary}}" required>
-                <span>1000</span>
-            </div>
-            <div class="Submit">
-                <input type="submit" value="Submit">
-            </div>
-        </form>
+        </div>
+        
 
 
         {% endblock %}

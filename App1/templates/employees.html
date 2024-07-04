@@ -10,8 +10,8 @@
     </head>
     <body>
         {% block content %}
-        <h1>EMPLOYEE LIST</h1> 
-        <br></br>
+        <h3>EMPLOYEE DATA</h3> 
+        <br>
         <table class="table table-striped" style="border-style: ridge; width: 60%;">
             <thead>
                 <tr>
@@ -39,7 +39,7 @@
                     <td>{{emp.date_joined}}</td>
                     <td>
                         <a href="{% url 'get_emp' emp.id %}">View/Edit</a>
-                        <a href="{% url 'delete_emp' emp.id %}">Delete</a>
+                        <a href="{% url 'delete_emp' emp.id %}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}
