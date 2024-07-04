@@ -10,42 +10,51 @@
     </head>
     <body>
         {% block content %}
-        <h3>EMPLOYEE DATA</h3> 
         <br>
-        <table class="table table-striped" style="border-style: ridge; width: 60%;">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>NAME</th>
-                    <th>SURNAME</th>
-                    <th>EMAIL</th>
-                    <th>MOBILE NUMBER</th>
-                    <th>DESIGNATION</th>
-                    <th>SALARY</th>
-                    <th>DATE JOINED</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for emp in all_emps %}
-                <tr>
-                    <td>{{emp.id}}</td>
-                    <td>{{emp.first_name}}</td>
-                    <td>{{emp.last_name}}</td>
-                    <td>{{emp.email}}</td>
-                    <td>{{emp.mobile_num}}</td>
-                    <td>{{emp.designation}}</td>
-                    <td>{{emp.salary}}</td>
-                    <td>{{emp.date_joined}}</td>
-                    <td>
-                        <a href="{% url 'get_emp' emp.id %}">View/Edit</a>
-                        <a href="{% url 'delete_emp' emp.id %}" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
+        <div class="container col-md-5">
+            <div class="row">
+                <h3>EMPLOYEE DATA</h3> 
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <table class="table table-striped" style="border-style: ridge; width: 75%;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>SURNAME</th>
+                            <th>EMAIL</th>
+                            <th>MOBILE NUMBER</th>
+                            <th>DESIGNATION</th>
+                            <th>SALARY</th>
+                            <th>DATE JOINED</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for emp in all_emps %}
+                        <tr>
+                            <td>{{emp.id}}</td>
+                            <td>{{emp.first_name}}</td>
+                            <td>{{emp.last_name}}</td>
+                            <td>{{emp.email}}</td>
+                            <td>{{emp.mobile_num}}</td>
+                            <td>{{emp.designation}}</td>
+                            <td>{{emp.salary}}</td>
+                            <td>{{emp.date_joined}}</td>
+                            <td>
+                                <a href="{% url 'get_emp' emp.id %}">View/Edit</a>
+                                <a href="{% url 'delete_emp' emp.id %}" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
 
-        </table>
+                </table>
+            </div>
+        </div>
         {% endblock %}
     </body>
 </html>
